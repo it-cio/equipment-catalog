@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "equipment-catalog"
+version = "0.1.0"
+description = ""
+authors = ["Divider <89965004+it-cio@users.noreply.github.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+uvicorn = "^0.17.6"
+SQLAlchemy = "^1.4.32"
+fastapi = "^0.75.0"
+
+[tool.poetry.dev-dependencies]
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
