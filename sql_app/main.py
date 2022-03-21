@@ -22,7 +22,7 @@ def get_db():
 def create_equipment(equipment: schemas.EquipmentCreate, db: Session = Depends(get_db)):
     db_equipment = crud.get_equipment_by_name(db, name=equipment.name)
     if db_equipment:
-        raise HTTPException(status_code=400, detail="Name already registered")
+        raise HTTPException(status_code=400, detail=f"{equipment.name} already exist")
     return crud.create_equipment(db=db, equipment=equipment)
 
 
@@ -50,6 +50,7 @@ def get_all_parts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)
 def create_part_for_equipment(
     compatibility: str, part: schemas.PartCreate, db: Session = Depends(get_db)
 ):
+    compatibility = ", ".join(compatibility.replace(',', ' ').strip().lower().title().split())
     return crud.create_equipment_part(db=db, part=part, compatibility=compatibility)
 
 
@@ -63,4 +64,5 @@ def get_all_consumables(skip: int = 0, limit: int = 100, db: Session = Depends(g
 def create_consumable_for_part(
     compatibility: str, consumable: schemas.ConsumableCreate, db: Session = Depends(get_db)
 ):
+    compatibility = ", ".join(compatibility.replace(',', ' ').strip().lower().title().split())
     return crud.create_part_consumable(db=db, consumable=consumable, compatibility=compatibility)

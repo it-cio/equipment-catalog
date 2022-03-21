@@ -1,4 +1,5 @@
-from pydantic import BaseModel
+import re
+from pydantic import BaseModel, validator
 
 
 class ConsumableBase(BaseModel):
@@ -7,7 +8,11 @@ class ConsumableBase(BaseModel):
 
 
 class ConsumableCreate(ConsumableBase):
-    pass
+    @validator('name')
+    def name_match(cls, name):
+        if re.match(r'^[а-яА-Я.,!@#$%^&/+=]+$', name):
+            raise ValueError(f"Name '{name}' is incorrect")
+        return name.lower().title()
 
 
 class Consumable(ConsumableBase):
@@ -24,7 +29,11 @@ class PartBase(BaseModel):
 
 
 class PartCreate(PartBase):
-    pass
+    @validator('name')
+    def name_match(cls, name):
+        if re.match(r'^[а-яА-Я.,!@#$%^&/+=]+$', name):
+            raise ValueError(f"Name '{name}' is incorrect")
+        return name.lower().title()
 
 
 class Part(PartBase):
@@ -41,7 +50,11 @@ class EquipmentBase(BaseModel):
 
 
 class EquipmentCreate(EquipmentBase):
-    pass
+    @validator('name')
+    def name_match(cls, name):
+        if re.match(r'^[а-яА-Я.,!@#$%^&/+=]+$', name):
+            raise ValueError(f"Name '{name}' is incorrect")
+        return name.lower().title()
 
 
 class Equipment(EquipmentBase):
