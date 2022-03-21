@@ -27,8 +27,8 @@ def get_parts(db: Session, skip: int = 0, limit: int = 100):
     return db.query(models.PartModel).offset(skip).limit(limit).all()
 
 
-def create_equipment_part(db: Session, part: schemas.PartCreate, equipment_id: int):
-    db_part = models.PartModel(**part.dict(), equipment_id=equipment_id)
+def create_equipment_part(db: Session, part: schemas.PartCreate, compatibility: str):
+    db_part = models.PartModel(**part.dict(), compatibility=compatibility)
     db.add(db_part)
     db.commit()
     db.refresh(db_part)

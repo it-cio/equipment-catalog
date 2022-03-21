@@ -19,6 +19,6 @@ class PartModel(Base):
     id = Column(Integer, primary_key=True, index=True)
     name = Column(String, unique=True, index=True)
     price = Column(Integer)
-    equipment_id = Column(Integer, ForeignKey("equipments.id"))
+    compatibility = Column(String, ForeignKey("equipments.name"))
 
     equipments = relationship("EquipmentModel", back_populates="parts")

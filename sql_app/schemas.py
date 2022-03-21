@@ -12,7 +12,7 @@ class PartCreate(PartBase):
 
 class Part(PartBase):
     id: int
-    equipment_id: int
+    compatibility: str
 
     class Config:
         orm_mode = True

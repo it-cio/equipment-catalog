@@ -40,15 +40,14 @@ def get_one_equipment(equipment_id: int, db: Session = Depends(get_db)):
     return db_equipment
 
 
-@app.post("/equipments/{equipment_id}/parts/", response_model=schemas.Equipment)
-def create_part_for_equipment(
-    equipment_id: int, part: schemas.PartCreate, db: Session = Depends(get_db)
-):
-    return crud.create_equipment_part(db=db, part=part, equipment_id=equipment_id)
-
-
 @app.get("/parts/", response_model=list[schemas.Equipment])
 def get_all_parts(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
     parts = crud.get_parts(db, skip=skip, limit=limit)
     return parts
 
+
+@app.post("/equipments/{compatibility}/parts/", response_model=schemas.Equipment)
+def create_part_for_equipment(
+    compatibility: str, part: schemas.PartCreate, db: Session = Depends(get_db)
+):
+    return crud.create_equipment_part(db=db, part=part, compatibility=compatibility)
