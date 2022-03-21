@@ -1,11 +1,11 @@
 from sqlalchemy.orm import Session
 
-from sql_app.models.equipments import EquipmentModel
-from sql_app.models.parts import PartModel
-from sql_app.models.consumables import ConsumableModel
-from sql_app.schemas.equipments import EquipmentCreate
-from sql_app.schemas.parts import PartCreate
-from sql_app.schemas.consumables import ConsumableCreate
+from app.models.equipments import EquipmentModel
+from app.models.parts import PartModel
+from app.models.consumables import ConsumableModel
+from app.schemas.equipments import EquipmentCreate
+from app.schemas.parts import PartCreate
+from app.schemas.consumables import ConsumableCreate
 
 
 def get_equipment(db: Session, equipment_id: int):

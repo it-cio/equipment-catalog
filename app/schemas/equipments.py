@@ -1,6 +1,6 @@
 import re
 from pydantic import BaseModel, validator
-from sql_app.schemas.parts import Part
+from app.schemas.parts import Part
 
 
 class EquipmentBase(BaseModel):

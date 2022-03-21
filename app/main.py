@@ -1,12 +1,12 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-from . import crud
-from .database import SessionLocal, engine
-from sql_app.database import Base
-from sql_app.schemas.equipments import EquipmentCreate, Equipment
-from sql_app.schemas.parts import PartCreate, Part
-from sql_app.schemas.consumables import ConsumableCreate
+from app import crud
+from app.database.sql import SessionLocal, engine
+from app.database.sql import Base
+from app.schemas.equipments import EquipmentCreate, Equipment
+from app.schemas.parts import PartCreate, Part
+from app.schemas.consumables import ConsumableCreate
 
 
 Base.metadata.create_all(bind=engine)

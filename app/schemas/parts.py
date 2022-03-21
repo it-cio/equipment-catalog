@@ -1,6 +1,6 @@
 import re
 from pydantic import BaseModel, validator
-from sql_app.schemas.consumables import Consumable
+from app.schemas.consumables import Consumable
 
 
 class PartBase(BaseModel):
