@@ -1,6 +1,8 @@
 import re
+
 from pydantic import BaseModel, validator
-from src.schemas.parts import Part
+
+from src.api.schemas.parts import Part
 
 
 class EquipmentBase(BaseModel):
