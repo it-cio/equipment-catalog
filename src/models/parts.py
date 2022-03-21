@@ -1,7 +1,7 @@
 from sqlalchemy import Column, ForeignKey, Integer, String
 from sqlalchemy.orm import relationship
 
-from app.database.sql import Base
+from src.database.sql import Base
 
 
 class PartModel(Base):
