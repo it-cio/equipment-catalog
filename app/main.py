@@ -1,7 +1,7 @@
 from fastapi import Depends, FastAPI, HTTPException
 from sqlalchemy.orm import Session
 
-from app import crud
+from app.database import crud
 from app.database.sql import SessionLocal, engine
 from app.database.sql import Base
 from app.schemas.equipments import EquipmentCreate, Equipment
