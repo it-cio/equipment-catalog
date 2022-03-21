@@ -51,3 +51,16 @@ def create_part_for_equipment(
     compatibility: str, part: schemas.PartCreate, db: Session = Depends(get_db)
 ):
     return crud.create_equipment_part(db=db, part=part, compatibility=compatibility)
+
+
+@app.get("/consumables/", response_model=list[schemas.Part])
+def get_all_consumables(skip: int = 0, limit: int = 100, db: Session = Depends(get_db)):
+    consumables = crud.get_consumables(db, skip=skip, limit=limit)
+    return consumables
+
+
+@app.post("/parts/{compatibility}/consumables/", response_model=schemas.Part)
+def create_consumable_for_part(
+    compatibility: str, consumable: schemas.ConsumableCreate, db: Session = Depends(get_db)
+):
+    return crud.create_part_consumable(db=db, consumable=consumable, compatibility=compatibility)
