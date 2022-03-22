@@ -8,8 +8,8 @@ from fastapi.middleware.cors import CORSMiddleware
 from src.api.routes import equipments, parts, consumables
 
 load_dotenv()
-host = os.getenv('host')
-port = int(os.getenv('port'))
+host = os.getenv('HOST')
+port = int(os.getenv('PORT'))
 routes = APIRouter()
 app = FastAPI()
 app.add_middleware(
